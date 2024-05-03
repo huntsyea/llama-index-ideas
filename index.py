@@ -7,17 +7,17 @@ from llama_index import GPTSimpleVectorIndex, SimpleDirectoryReader, LLMPredicto
 from langchain.llms.openai import OpenAI
 
 # Define a simple Streamlit app
-st.title("Ask Llama")
-query = st.text_input("What would you like to ask? (source: data/paul_graham_essay.txt)", "")
+st.title("Ask the Ideas List 💡")
+query = st.text_input("What would you like to ask? (source: data/Index_SaaS_Ideas.csv)", "")
 
 # If the 'Submit' button is clicked
-if st.button("Submit"):
+if st.button("Ask"):
     if not query.strip():
         st.error(f"Please provide the search query.")
     else:
         try:
             # This example uses text-davinci-003 by default; feel free to change if desired
-            llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="text-davinci-003"))
+            llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="gpt-3.5-turbo"))
 
             # Configure prompt parameters and initialise helper
             max_input_size = 4096
